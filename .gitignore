@@ -29,8 +29,11 @@ hs_err_pid*
 build/
 dist/
 nbproject/private/private.properties
+private.xml
 vegal-restaurant-ejb/build/
 vegal-restaurant-ejb/dist/
 vegal-restaurant-war/build/
 vegal-restaurant-war/dist/
 
+# scss artifacts
+.sass-cache/

@@ -1,3 +1,10 @@
+<%-- 
+    Document   : login
+    Created on : Jul 28, 2020, 10:28:37 PM
+    Author     : makut
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +14,10 @@
     <title>Login</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="assets/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -21,7 +28,7 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="images/signin-vegal.png" alt="sing up image"></figure>
+                        <figure><img src="assets/images/signin-vegal.png" alt="sing up image"></figure>
                         <a href="#" class="signup-image-link">Create an account</a>
                     </div>
 

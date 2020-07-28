@@ -1,3 +1,10 @@
+<%-- 
+    Document   : index
+    Created on : Jul 28, 2020, 10:28:37 PM
+    Author     : makut
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,15 +18,15 @@
   <title>VegAl Restaurant</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template -->
-  <link href="css/landing-page.css" rel="stylesheet">
+  <link href="assets/css/landing-page.css" rel="stylesheet">
 
 </head>
 
@@ -45,7 +52,7 @@
           <form>
             <div class="form-row">
               <div class="col-12 col-md">
-                <a class="btn btn-block btn-lg btn-primary" href="register.html">Sign up!</a>
+                <a class="btn btn-block btn-lg btn-primary" href="register.jsp.html">Sign up!</a>
               </div>
             </div>
           </form>
@@ -94,21 +101,21 @@
     <div class="container-fluid p-0">
       <div class="row no-gutters">
 
-        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('images/reason-1.jpg');"></div>
+        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/images/reason-1.jpg');"></div>
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
           <h2>Unique</h2>
           <p class="lead mb-0">We provide unique vegan dishes that dynamically vary on our seasonal menu based on the fruits and vegetables in season.</p>
         </div>
       </div>
       <div class="row no-gutters">
-        <div class="col-lg-6 text-white showcase-img" style="background-image: url('images/reason-2.jpg');"></div>
+        <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/images/reason-2.jpg');"></div>
         <div class="col-lg-6 my-auto showcase-text">
           <h2>Availability &amp; Convinience</h2>
           <p class="lead mb-0">Our strategic locations as well as our online presence both on social media and our website allow us to conveniently connect with our customers.</p>
         </div>
       </div>
       <div class="row no-gutters">
-        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('images/reason-3.jpg');"></div>
+        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/images/reason-3.jpg');"></div>
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
           <h2>Family-friendly</h2>
           <p class="lead mb-0">We provide a fun, warm and friendly environment to all who visit our establishment.</p>
@@ -124,21 +131,21 @@
       <div class="row">
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-            <img class="img-fluid rounded-circle mb-3" src="images/man-1.png" alt="">
+            <img class="img-fluid rounded-circle mb-3" src="assets/images/man-1.png" alt="">
             <h5>Lucien Makutano</h5>
             <p class="font-weight-light mb-0">Software Engineer with several years of experience. </p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-            <img class="img-fluid rounded-circle mb-3" src="images/woman-1.png" alt="">
+            <img class="img-fluid rounded-circle mb-3" src="assets/images/woman-1.png" alt="">
             <h5>Lyvia Lusiji</h5>
             <p class="font-weight-light mb-0">Passionate about data analysis with experience with Spreadsheet Management.</p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-            <img class="img-fluid rounded-circle mb-3" src="images/man-2.png" alt="">
+            <img class="img-fluid rounded-circle mb-3" src="assets/images/man-2.png" alt="">
             <h5>Kenneth Temba</h5>
             <p class="font-weight-light mb-0">Market Research Analyst with a passion in Advertisements and Overall Brand Image.</p>
           </div>
@@ -159,7 +166,7 @@
           <form>
             <div class="form-row">
               <div class="col-12 col-md">
-                <a class="btn btn-primary btn-lg" href="register.html">Sign up!</a>
+                <a class="btn btn-primary btn-lg" href="register.jsp.html">Sign up!</a>
               </div>
             </div>
           </form>
