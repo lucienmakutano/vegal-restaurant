@@ -18,6 +18,8 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="shortcut icon" href="assets/images/signin-vegal.png">
 </head>
 <body>
 

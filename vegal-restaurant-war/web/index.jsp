@@ -28,6 +28,8 @@
   <!-- Custom styles for this template -->
   <link href="assets/css/landing-page.css" rel="stylesheet">
 
+  <link rel="shortcut icon" href="assets/images/signin-vegal.png">
+
 </head>
 
 <body>
