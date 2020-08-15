@@ -38,12 +38,12 @@ public class ReservationFacade extends AbstractFacade<Reservation> implements Re
     
     @Override
     public void edit(Reservation reservation) {
-        String query = "SET numOfSeats=?, isBooked=? WHERE id=?";
+        String query = "SET user_id=?, table_id=? WHERE reservation_id=?";
         
         Query ejbQl = em.createQuery(query);
         
-        ejbQl.setParameter(1, reservation.getNumOfSeats());
-        ejbQl.setParameter(2, reservation.getIsBooked());
+        ejbQl.setParameter(1, reservation.getUser());
+        ejbQl.setParameter(2, reservation.getTable());
         ejbQl.setParameter(3, reservation.getId());
         
         ejbQl.executeUpdate();

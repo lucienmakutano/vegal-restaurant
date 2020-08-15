@@ -38,13 +38,14 @@ public class UserFacade extends AbstractFacade<User> implements UserFacadeLocal 
     
     @Override
     public void edit(User user) {
-        String query = "SET numOfSeats=?, isBooked=? WHERE id=?";
+        String query = "SET name=?, email=?, password=? WHERE user_id=?";
         
         Query ejbQl = em.createQuery(query);
         
-        ejbQl.setParameter(1, user.getNumOfSeats());
-        ejbQl.setParameter(2, user.getIsBooked());
-        ejbQl.setParameter(3, user.getId());
+        ejbQl.setParameter(1, user.getName());
+        ejbQl.setParameter(2, user.getEmail());
+        ejbQl.setParameter(3, user.getPassword());
+        ejbQl.setParameter(4, user.getId());
         
         ejbQl.executeUpdate();
     }

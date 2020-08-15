@@ -38,13 +38,15 @@ public class OrderFoodFacade extends AbstractFacade<OrderFood> implements OrderF
     
     @Override
     public void edit(OrderFood orderFood) {
-        String query = "SET numOfSeats=?, isBooked=? WHERE id=?";
+        String query = "SET order_id=?, food_id=?, qty=?, date_ordered=? WHERE id=?";
         
         Query ejbQl = em.createQuery(query);
         
-        ejbQl.setParameter(1, orderFood.getNumOfSeats());
-        ejbQl.setParameter(2, orderFood.getIsBooked());
-        ejbQl.setParameter(3, orderFood.getId());
+        ejbQl.setParameter(1, orderFood.getOrder());
+        ejbQl.setParameter(2, orderFood.getFood());
+        ejbQl.setParameter(3, orderFood.getQuantity());
+        ejbQl.setParameter(4, orderFood.getDate_ordered());
+        ejbQl.setParameter(5, orderFood.getId());
         
         ejbQl.executeUpdate();
     }

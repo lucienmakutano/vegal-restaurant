@@ -38,13 +38,15 @@ public class PaymentFacade extends AbstractFacade<Payment> implements PaymentFac
     
     @Override
     public void edit(Payment payment) {
-        String query = "SET numOfSeats=?, isBooked=? WHERE id=?";
+        String query = "SET user_id=?, payment_method=?, amount=?, paid_at=? WHERE payment_id=?";
         
         Query ejbQl = em.createQuery(query);
         
-        ejbQl.setParameter(1, payment.getNumOfSeats());
-        ejbQl.setParameter(2, payment.getIsBooked());
-        ejbQl.setParameter(3, payment.getId());
+        ejbQl.setParameter(1, payment.getUser());
+        ejbQl.setParameter(2, payment.getPayment_method());
+        ejbQl.setParameter(3, payment.getAmount());
+        ejbQl.setParameter(4, payment.getPaid_at());
+        ejbQl.setParameter(5, payment.getId());
         
         ejbQl.executeUpdate();
     }
