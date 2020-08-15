@@ -61,7 +61,7 @@ public class Table implements Serializable {
      *
      * @return the value of isBooked
      */
-    public boolean isIsBooked() {
+    public boolean getIsBooked() {
         return isBooked;
     }
 

@@ -34,45 +34,45 @@ public class Reservation implements Serializable {
     }
     
     @OneToOne
-    private Table table_id;
+    private Table table;
 
     /**
-     * Get the value of table_id
+     * Get the value of table
      *
-     * @return the value of table_id
+     * @return the value of table
      */
-    public Table getTable_id() {
-        return table_id;
+    public Table getTable() {
+        return table;
     }
 
     /**
-     * Set the value of table_id
+     * Set the value of table
      *
-     * @param table_id new value of table_id
+     * @param table new value of table
      */
-    public void setTable_id(Table table_id) {
-        this.table_id = table_id;
+    public void setTable(Table table) {
+        this.table = table;
     }
     
     @ManyToOne
-    private User user_id;
+    private User user;
 
     /**
-     * Get the value of user_id
+     * Get the value of user
      *
-     * @return the value of user_id
+     * @return the value of user
      */
-    public User getUser_id() {
-        return user_id;
+    public User getUser() {
+        return user;
     }
 
     /**
-     * Set the value of user_id
+     * Set the value of user
      *
-     * @param user_id new value of user_id
+     * @param user new value of user
      */
-    public void setUser_id(User user_id) {
-        this.user_id = user_id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 

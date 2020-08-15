@@ -116,7 +116,7 @@ public class Food implements Serializable {
     }
     
     
-    @OneToMany
+    @OneToMany(mappedBy = "cart")
     private List<CartFood> cart_foods;
 
     /**

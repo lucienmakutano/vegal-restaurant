@@ -35,65 +35,45 @@ public class CartFood implements Serializable {
     }
     
     @ManyToOne
-    private Cart order_id;
+    private Cart cart;
 
     /**
-     * Get the value of order_id
+     * Get the value of cart
      *
-     * @return the value of order_id
+     * @return the value of cart
      */
-    public Cart getOrder_id() {
-        return order_id;
+    public Cart getCart() {
+        return cart;
     }
 
     /**
-     * Set the value of order_id
+     * Set the value of cart
      *
-     * @param order_id new value of order_id
+     * @param cart new value of cart
      */
-    public void setOrder_id(Cart order_id) {
-        this.order_id = order_id;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     @ManyToOne
-    private Food food_id;
+    private Food food;
 
     /**
-     * Get the value of food_id
+     * Get the value of food
      *
-     * @return the value of food_id
+     * @return the value of food
      */
-    public Food getFood_id() {
-        return food_id;
+    public Food getFood() {
+        return food;
     }
 
     /**
-     * Set the value of food_id
+     * Set the value of food
      *
-     * @param food_id new value of food_id
+     * @param food new value of food
      */
-    public void setFood_id(Food food_id) {
-        this.food_id = food_id;
-    }
-
-    private int quantity;
-
-    /**
-     * Get the value of quantity
-     *
-     * @return the value of quantity
-     */
-    public int getQuantity() {
-        return quantity;
-    }
-
-    /**
-     * Set the value of quantity
-     *
-     * @param quantity new value of quantity
-     */
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setFood(Food food) {
+        this.food = food;
     }
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)

@@ -55,7 +55,7 @@ public class PaymentMethod implements Serializable {
         this.name = name;
     }
     
-    @OneToMany(mappedBy = "method")
+    @OneToMany(mappedBy = "payment_method")
     private List<Payment> payments;
 
     /**

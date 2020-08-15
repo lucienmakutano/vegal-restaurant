@@ -35,45 +35,45 @@ public class OrderFood implements Serializable {
     }
     
     @ManyToOne
-    private Order order_id;
+    private Order order;
 
     /**
-     * Get the value of order_id
+     * Get the value of order
      *
-     * @return the value of order_id
+     * @return the value of order
      */
-    public Order getOrder_id() {
-        return order_id;
+    public Order getOrder() {
+        return order;
     }
 
     /**
-     * Set the value of order_id
+     * Set the value of order
      *
-     * @param order_id new value of order_id
+     * @param order new value of order
      */
-    public void setOrder_id(Order order_id) {
-        this.order_id = order_id;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @ManyToOne
-    private Food food_id;
+    private Food food;
 
     /**
-     * Get the value of food_id
+     * Get the value of food
      *
-     * @return the value of food_id
+     * @return the value of food
      */
-    public Food getFood_id() {
-        return food_id;
+    public Food getFood() {
+        return food;
     }
 
     /**
-     * Set the value of food_id
+     * Set the value of food
      *
-     * @param food_id new value of food_id
+     * @param food new value of food
      */
-    public void setFood_id(Food food_id) {
-        this.food_id = food_id;
+    public void setFood(Food food) {
+        this.food = food;
     }
 
     private int quantity;

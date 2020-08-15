@@ -35,24 +35,24 @@ public class Payment implements Serializable {
     }
     
     @ManyToOne
-    private User user_id;
+    private User user;
 
     /**
-     * Get the value of user_id
+     * Get the value of user
      *
-     * @return the value of user_id
+     * @return the value of user
      */
-    public User getUser_id() {
-        return user_id;
+    public User getUser() {
+        return user;
     }
 
     /**
-     * Set the value of user_id
+     * Set the value of user
      *
-     * @param user_id new value of user_id
+     * @param user new value of user
      */
-    public void setUser_id(User user_id) {
-        this.user_id = user_id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @ManyToOne
