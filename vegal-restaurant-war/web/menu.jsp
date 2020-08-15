@@ -1,3 +1,10 @@
+<%-- 
+    Document   : menu
+    Created on : 15-Aug-2020, 14:18:20
+    Author     : kenne
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Reserve a table</title>
+  <title>VegAl Food Menu</title>
 
   <!-- Bootstrap core CSS -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,9 +35,9 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">VegAl Home Page</div>
       <div class="list-group list-group-flush">
-        <a href="reservation.html" class="list-group-item list-group-item-action bg-light">Reserve a table</a>
-        <a href="order.html" class="list-group-item list-group-item-action bg-light">Order food</a>
-        <a href="menu.html" class="list-group-item list-group-item-action bg-light">Menu</a>
+        <a href="reservation.jsp" class="list-group-item list-group-item-action bg-light">Reserve a table</a>
+        <a href="order.jsp" class="list-group-item list-group-item-action bg-light">Order food</a>
+        <a href="menu.jsp" class="list-group-item list-group-item-action bg-light">Menu</a>
        <!--
         <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
@@ -53,7 +60,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="home.html">Home Page <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="home.jsp">Home Page <span class="sr-only">(current)</span></a>
             </li>
             <!--
             <li class="nav-item">
@@ -68,7 +75,7 @@
                 <!-- <a class="dropdown-item" href="#">User Profile</a> -->
                 <!-- <a class="dropdown-item" href="#">Another action</a> -->
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item" href="login.jsp">Logout</a>
               </div>
             </li>
           </ul>
@@ -76,23 +83,11 @@
       </nav>
 
       <div class="container-fluid">
-        <h1 class="mt-4">Ready to book a table?</h1>
-        <p>Click the link below to fill out the reservation form.</p>
-
-        <a
-          href="javascript:void(
-            window.open(
-              'Restaurant_Reservation_Form.html',
-              'blank',
-              'scrollbars=yes,
-              toolbar=no,
-              width=700,
-              height=500'
-            )
-          )
-        ">
-          VegAL Reservation Form
-        </a>
+        <h1 class="mt-4">Food Menu</h1>
+        <p>Below is a list of scrumptious food offered in our restaurant.</p>
+      </div>
+      <div>
+        <img src="assets/images/vegAl-menu.png" alt="Menu" width="800" height="1000">
       </div>
     </div>
     <!-- /#page-content-wrapper -->
@@ -115,3 +110,4 @@
 </body>
 
 </html>
+
