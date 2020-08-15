@@ -30,6 +30,7 @@ build/
 dist/
 nbproject/private/private.properties
 private.xml
+private.properties
 vegal-restaurant-ejb/build/
 vegal-restaurant-ejb/dist/
 vegal-restaurant-war/build/
