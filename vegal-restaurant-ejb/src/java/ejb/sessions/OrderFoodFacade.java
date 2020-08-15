@@ -6,9 +6,11 @@
 package ejb.sessions;
 
 import ejb.entities.OrderFood;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +31,47 @@ public class OrderFoodFacade extends AbstractFacade<OrderFood> implements OrderF
         super(OrderFood.class);
     }
     
+    @Override
+    public void create(OrderFood orderFood) {
+        em.persist(orderFood);
+    }
+    
+    @Override
+    public void edit(OrderFood orderFood) {
+        String query = "SET numOfSeats=?, isBooked=? WHERE id=?";
+        
+        Query ejbQl = em.createQuery(query);
+        
+        ejbQl.setParameter(1, orderFood.getNumOfSeats());
+        ejbQl.setParameter(2, orderFood.getIsBooked());
+        ejbQl.setParameter(3, orderFood.getId());
+        
+        ejbQl.executeUpdate();
+    }
+    
+    @Override
+    public void remove(OrderFood orderFood) {
+        em.remove(orderFood);
+    }
+    
+    @Override
+    public OrderFood find(Object id) {
+        String query = "From OrderFood oF WHERE oF.id=?";
+        
+        Query ejbQl = em.createQuery(query);
+        
+        ejbQl.setParameter(1, id);
+        
+        return (OrderFood) ejbQl.getSingleResult();
+    }
+    
+    @Override
+    public List<OrderFood> findAll() {
+        return em.createQuery("From OrderFood").getResultList();
+    }
+    
+    @Override
+    public int count() {
+        return em.createQuery("From OrderFood").getMaxResults();
+    }
 }
