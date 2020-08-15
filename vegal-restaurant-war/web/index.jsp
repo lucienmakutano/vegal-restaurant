@@ -37,8 +37,8 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">VegAl</a>
-      <a class="btn btn-primary" href="login.html">Sign In</a>
+      <a class="navbar-brand" href="index.jsp">VegAl</a>
+      <a class="btn btn-primary" href="login.jsp">Sign In</a>
     </div>
   </nav>
 
@@ -54,7 +54,7 @@
           <form>
             <div class="form-row">
               <div class="col-12 col-md">
-                <a class="btn btn-block btn-lg btn-primary" href="register.jsp.html">Sign up!</a>
+                <a class="btn btn-block btn-lg btn-primary" href="register.jsp">Sign up!</a>
               </div>
             </div>
           </form>
@@ -168,7 +168,7 @@
           <form>
             <div class="form-row">
               <div class="col-12 col-md">
-                <a class="btn btn-primary btn-lg" href="register.jsp.html">Sign up!</a>
+                <a class="btn btn-primary btn-lg" href="register.jsp">Sign up!</a>
               </div>
             </div>
           </form>
@@ -182,7 +182,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-        	<!--
+          <!--
           <ul class="list-inline mb-2">
             <li class="list-inline-item">
               <a href="#">About</a>
@@ -200,7 +200,7 @@
               <a href="#">Privacy Policy</a>
             </li>
           </ul>
-      -->
+           -->
           <p class="text-muted small mb-4 mb-lg-0">&copy; VegAL Restaurant 2020. All Rights Reserved.</p>
         </div>
         <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
@@ -227,9 +227,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
