@@ -6,6 +6,7 @@
 package ejb.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -35,6 +37,50 @@ public class Reservation implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(name = "reservation_date")
+    private Date reservation_date;
+
+    /**
+     * Get the value of reservation_date
+     *
+     * @return the value of reservation_date
+     */
+    public Date getReservation_date() {
+        return reservation_date;
+    }
+
+    /**
+     * Set the value of reservation_date
+     *
+     * @param reservation_date new value of reservation_date
+     */
+    public void setReservation_date(Date reservation_date) {
+        this.reservation_date = reservation_date;
+    }
+
+    @Column(name = "telephone_number")
+    private String phone;
+
+    /**
+     * Get the value of phone
+     *
+     * @return the value of phone
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * Set the value of phone
+     *
+     * @param phone new value of phone
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     
     @OneToOne
     private Table table;
@@ -77,6 +123,28 @@ public class Reservation implements Serializable {
      */
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date reserved_at;
+    
+
+    /**
+     * Get the value of reserved_at
+     *
+     * @return the value of reserved_at
+     */
+    public Date getReserved_at() {
+        return reserved_at;
+    }
+
+    /**
+     * Set the value of reserved_at
+     *
+     * @param reserved_at new value of reserved_at
+     */
+    public void setReserved_at(Date reserved_at) {
+        this.reserved_at = reserved_at;
     }
 
 
