@@ -25,6 +25,8 @@ public interface TableFacadeLocal {
     Table find(Object id);
 
     List<Table> findAll();
+    
+    List<Table> findAllUnbookedTables();
 
     List<Table> findRange(int[] range);
 
