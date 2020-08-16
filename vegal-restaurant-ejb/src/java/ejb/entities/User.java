@@ -101,27 +101,6 @@ public class User implements Serializable {
         this.password = password;
     }
     
-    @Column(name = "user_role")
-    private String user_role;
-
-    /**
-     * Get the value of user_role
-     *
-     * @return the value of user_role
-     */
-    public String getUser_role() {
-        return user_role;
-    }
-
-    /**
-     * Set the value of user_role
-     *
-     * @param user_role new value of user_role
-     */
-    public void setUser_role(String user_role) {
-        this.user_role = user_role;
-    }
-    
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
 

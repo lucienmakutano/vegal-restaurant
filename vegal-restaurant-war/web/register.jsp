@@ -34,9 +34,9 @@
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
                         <%
-                            String errorMessage = String.valueOf(request.getSession().getAttribute("errorMessage"));
+                            String errorMessage = String.valueOf(session.getAttribute("errorMessage"));
                             
-                            if ( ! errorMessage.equals("") || errorMessage != null ) {
+                            if ( ! errorMessage.equals("") && errorMessage != null ) {
                                 out.println("<div class='alert alert-danger'>"
                                         + "<span>"+ errorMessage +"</span>"
                                         + "</div>");

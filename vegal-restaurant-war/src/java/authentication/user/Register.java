@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package authentication;
+package authentication.user;
 
 import ejb.entities.User;
-import ejb.sessions.UserFacade;
 import ejb.sessions.UserFacadeLocal;
 import java.io.IOException;
 import java.util.Date;
@@ -25,7 +24,7 @@ import security.BCrypt;
 public class Register extends HttpServlet {
 
     @EJB
-    private final UserFacadeLocal userFacade;
+    private UserFacadeLocal userFacade;
     
     /**
      * 
@@ -35,7 +34,6 @@ public class Register extends HttpServlet {
 
     public Register() {
         user = new User();
-        userFacade = new UserFacade();
     }
     
     
@@ -62,23 +60,23 @@ public class Register extends HttpServlet {
         
         if (name == null || email == null || password == null) {
             request.getSession().setAttribute("errorMessage", "Please fill in all the fields");
-            dispatcher = request.getRequestDispatcher("/register.jsp");
+            dispatcher = request.getRequestDispatcher("register.jsp");
             dispatcher.include(request, response);
         }
         else if ( ! confirmPassword.equals(password) ) {
             request.getSession().setAttribute("errorMessage", "The passwords must match");
-            dispatcher = request.getRequestDispatcher("/register.jsp");
+            dispatcher = request.getRequestDispatcher("register.jsp");
             dispatcher.include(request, response);
         }
         else{
             user.setName(name);
             user.setEmail(email);
             user.setPassword(hashedPassword);
-            user.setUser_role("customer");
+//            user.setUser_role("customer");
             user.setDate_created(new Date());
 
             userFacade.create(user);
-            response.sendRedirect("/index.jsp");
+            response.sendRedirect("login.jsp");
         }
     }
 
