@@ -21,7 +21,7 @@ import javax.persistence.Temporal;
  * @author kenne
  */
 @Entity
-@javax.persistence.Table(name = "users")
+@javax.persistence.Table(name = "admin")
 public class Admin implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -101,15 +101,15 @@ public class Admin implements Serializable {
         this.password = password;
     }
     
-    @OneToMany(mappedBy = "admin")
-    private List<Food> food;
-
+    @Column(name = "food")
+    private String food;
+    
     /**
      * Get the value of food
      *
      * @return the value of food
      */
-    public List<Food> getFood() {
+    public String getFood() {
         return food;
     }
 
@@ -118,11 +118,32 @@ public class Admin implements Serializable {
      *
      * @param food new value of food
      */
-    public void setFood(List<Food> food) {
+    public void setFood(String food) {
         this.food = food;
     }
+    
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(name = "date_created")
+    private Date date_created;
 
+    /**
+     * Get the value of date_created
+     *
+     * @return the value of date_created
+     */
+    public Date getDate_created() {
+        return date_created;
+    }
 
+    /**
+     * Set the value of date_created
+     *
+     * @param date_created new value of date_created
+     */
+    public void setDate_created(Date date_created) {
+        this.date_created = date_created;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
