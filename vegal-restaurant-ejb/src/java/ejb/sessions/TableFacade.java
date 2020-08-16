@@ -31,6 +31,10 @@ public class TableFacade extends AbstractFacade<Table> implements TableFacadeLoc
         super(Table.class);
     }
     
+    /**
+     *
+     * @param table
+     */
     @Override
     public void create(Table table) {
         em.persist(table);

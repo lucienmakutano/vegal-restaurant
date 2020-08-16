@@ -21,13 +21,23 @@ j2ee.server.middleware=C:/Program Files/glassfish-4.1.1
 netbeans.user=C:\\Users\\<your-pc-user>\\AppData\\Roaming\\NetBeans\\8.2
 wa.copy.client.jar.from=C:\\Users\\<your-pc-user>\\AppData\\Roaming\\NetBeans\\8.2\\config\\GF_4.1.1\\domain1\\generated\\xml
 ```
+# System requirements
+to run this project you need
+1. Netbeans EE > 8.\*
+2. Glassfish 5.\*
+3. jdk1.^8.\*
+
+You will need to create a resource called `vegal_restau` in your derby database @`http://localhost:4848`
 
 # usage
 
-to run this project first deplay it by right clicking on `vegal-restaurant` then on `deploy`
-next `run` the project by following the privious step but this time click on `run` instead of
+to run this project first deplay it by right clicking on `vegal-restaurant` then on `Clean and Build`
+next `deploy` the project by following the privious step but this time click on `run` instead of
 `deploy`
 
 ## base url
 
 `http://localhost:8080/vegal-restaurant-war/`
+
+# contributors
+@Lusiji254 @tadomikikuto-bit @KennethTL

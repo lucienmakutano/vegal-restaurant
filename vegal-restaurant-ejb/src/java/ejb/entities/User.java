@@ -8,6 +8,7 @@ package ejb.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,11 +21,13 @@ import javax.persistence.Temporal;
  * @author makut
  */
 @Entity
+@javax.persistence.Table(name = "users")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private Long id;
 
     public Long getId() {
@@ -35,6 +38,7 @@ public class User implements Serializable {
         this.id = id;
     }
     
+    @Column(name = "name")
     private String name;
 
     /**
@@ -55,7 +59,8 @@ public class User implements Serializable {
         this.name = name;
     }
 
-        private String email;
+    @Column(name = "email")
+    private String email;
 
     /**
      * Get the value of email
@@ -75,6 +80,7 @@ public class User implements Serializable {
         this.email = email;
     }
     
+    @Column(name = "password")
     private String password;
 
     /**
@@ -95,24 +101,25 @@ public class User implements Serializable {
         this.password = password;
     }
     
-    private String role;
+    @Column(name = "user_role")
+    private String user_role;
 
     /**
-     * Get the value of role
+     * Get the value of user_role
      *
-     * @return the value of role
+     * @return the value of user_role
      */
-    public String getRole() {
-        return role;
+    public String getUser_role() {
+        return user_role;
     }
 
     /**
-     * Set the value of role
+     * Set the value of user_role
      *
-     * @param role new value of role
+     * @param user_role new value of user_role
      */
-    public void setRole(String role) {
-        this.role = role;
+    public void setUser_role(String user_role) {
+        this.user_role = user_role;
     }
     
     @OneToMany(mappedBy = "user")
@@ -180,6 +187,7 @@ public class User implements Serializable {
     }
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(name = "date_created")
     private Date date_created;
 
     /**

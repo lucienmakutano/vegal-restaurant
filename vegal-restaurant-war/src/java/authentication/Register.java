@@ -5,12 +5,18 @@
  */
 package authentication;
 
+import ejb.entities.User;
+import ejb.sessions.UserFacade;
+import ejb.sessions.UserFacadeLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Date;
+import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import security.BCrypt;
 
 /**
  *
@@ -18,6 +24,21 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Register extends HttpServlet {
 
+    @EJB
+    private final UserFacadeLocal userFacade;
+    
+    /**
+     * 
+     * @var User user
+     */
+    private final User user;
+
+    public Register() {
+        user = new User();
+        userFacade = new UserFacade();
+    }
+    
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,17 +51,34 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Register</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Register at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("re_pass");
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(16));
+        
+        RequestDispatcher dispatcher = null;
+        
+        if (name == null || email == null || password == null) {
+            request.getSession().setAttribute("errorMessage", "Please fill in all the fields");
+            dispatcher = request.getRequestDispatcher("/register.jsp");
+            dispatcher.include(request, response);
+        }
+        else if ( ! confirmPassword.equals(password) ) {
+            request.getSession().setAttribute("errorMessage", "The passwords must match");
+            dispatcher = request.getRequestDispatcher("/register.jsp");
+            dispatcher.include(request, response);
+        }
+        else{
+            user.setName(name);
+            user.setEmail(email);
+            user.setPassword(hashedPassword);
+            user.setUser_role("customer");
+            user.setDate_created(new Date());
+
+            userFacade.create(user);
+            response.sendRedirect("/index.jsp");
         }
     }
 
@@ -54,7 +92,7 @@ public class Register extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
