@@ -18,7 +18,10 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="assets/css/style.css">
-
+    
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css"/>
+    
     <link rel="shortcut icon" href="assets/images/signin-vegal.png">
 </head>
 <body>
@@ -31,19 +34,28 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="assets/images/signin-vegal.png" alt="sing up image"></figure>
-                        <a href="#" class="signup-image-link">Create an account</a>
+                        <a href="register.jsp" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">
                         <h2 class="form-title">Login</h2>
-                        <form method="POST" class="register-form" id="login-form">
+                        <%
+                            String errorMessage = String.valueOf(session.getAttribute("errorMessage"));
+                            
+                            if ( ! errorMessage.equals("") && errorMessage != null ) {
+                                out.println("<div class='alert alert-danger'>"
+                                        + "<span>"+ errorMessage +"</span>"
+                                        + "</div>");
+                            }
+                        %>
+                        <form method="POST" action="login" class="register-form" id="login-form">
                             <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
+                                <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="email" name="email" required id="your_email" placeholder="Your Email"/>
                             </div>
                             <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" required id="your_pass" placeholder="Password"/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
@@ -71,5 +83,19 @@
     <!-- JS -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        $(function () {
+            $("#your_email").focus(function () {
+                $(".alert.alert-danger").hide();
+            });
+            
+            $("#your_pass").focus(function () {
+                $(".alert.alert-danger").hide();
+            });
+        });
+        
+    </script>
 </body>
 </html>
