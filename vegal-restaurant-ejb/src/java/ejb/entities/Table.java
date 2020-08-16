@@ -7,6 +7,7 @@ package ejb.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,11 +19,13 @@ import javax.persistence.Temporal;
  * @author makut
  */
 @Entity
+@javax.persistence.Table(name = "tables")
 public class Table implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "table_id")
     private Long id;
     
     public Long getId() {

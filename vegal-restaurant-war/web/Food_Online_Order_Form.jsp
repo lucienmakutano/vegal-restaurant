@@ -119,7 +119,7 @@
     }
   
     .supernova .form-all, .form-all {
-      background-color: ;
+      /*background-color: ;*/
       border: 1px solid transparent;
     }
   

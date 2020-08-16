@@ -8,6 +8,7 @@ package ejb.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +26,7 @@ public class Food implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "food_id")
     private Long id;
 
     public Long getId() {
@@ -75,26 +77,6 @@ public class Food implements Serializable {
         this.string = string;
     }
     
-    private int quantity;
-
-    /**
-     * Get the value of quantity
-     *
-     * @return the value of quantity
-     */
-    public int getQuantity() {
-        return quantity;
-    }
-
-    /**
-     * Set the value of quantity
-     *
-     * @param quantity new value of quantity
-     */
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-    
     private String image;
 
     /**
@@ -116,7 +98,7 @@ public class Food implements Serializable {
     }
     
     
-    @OneToMany(mappedBy = "cart")
+    @OneToMany(mappedBy = "food")
     private List<CartFood> cart_foods;
 
     /**
