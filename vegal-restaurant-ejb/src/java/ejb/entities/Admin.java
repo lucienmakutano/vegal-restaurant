@@ -101,26 +101,6 @@ public class Admin implements Serializable {
         this.password = password;
     }
     
-    @Column(name = "food")
-    private String food;
-    
-    /**
-     * Get the value of food
-     *
-     * @return the value of food
-     */
-    public String getFood() {
-        return food;
-    }
-
-    /**
-     * Set the value of food
-     *
-     * @param food new value of food
-     */
-    public void setFood(String food) {
-        this.food = food;
-    }
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Column(name = "date_created")
