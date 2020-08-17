@@ -35,8 +35,7 @@ public class Table implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    @Column(name = "table_name")
+
     private String name;
 
     /**
@@ -57,7 +56,7 @@ public class Table implements Serializable {
         this.name = name;
     }
 
-
+    
     private int numOfSeats;
 
     /**

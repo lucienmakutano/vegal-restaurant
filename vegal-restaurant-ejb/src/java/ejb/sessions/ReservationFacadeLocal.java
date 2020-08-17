@@ -25,6 +25,8 @@ public interface ReservationFacadeLocal {
     Reservation find(Object id);
 
     List<Reservation> findAll();
+    
+    List<Reservation> userReservations(Object user);
 
     List<Reservation> findRange(int[] range);
 

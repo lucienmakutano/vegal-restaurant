@@ -40,7 +40,7 @@ public class UserFacade extends AbstractFacade<User> implements UserFacadeLocal 
         cq.select(user);
         Predicate predicate = cb.equal(user.get(User_.email), email);
         cq.where(predicate);
-//      
+      
         return (User) getEntityManager().createQuery(cq).getSingleResult();
     }
 }
