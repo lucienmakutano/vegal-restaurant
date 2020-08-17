@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author kenne
  */
-@WebServlet(name = "AdminLogin", urlPatterns = {"/AdminLogin"})
+@WebServlet(name = "AdminLogin", urlPatterns = {"/admin-login"})
 public class AdminLogin extends HttpServlet {
     
     @EJB
@@ -48,7 +48,7 @@ public class AdminLogin extends HttpServlet {
         
         if (email == null || password == null || email.equals("") || password.equals("")) {
             request.getSession().setAttribute("errorMessage", "Please fill in all the fields");
-            dispatcher = request.getRequestDispatcher("login.jsp");
+            dispatcher = request.getRequestDispatcher("admin-login.jsp");
             dispatcher.include(request, response);
         }else {
             Admin admin = adminFacade.findByEmail(email);
@@ -59,7 +59,7 @@ public class AdminLogin extends HttpServlet {
                 session.setAttribute("email", admin.getEmail());
                 session.setAttribute("name", admin.getName());
                 session.setMaxInactiveInterval(600);
-                response.sendRedirect("admin-login.jsp");
+                response.sendRedirect("adminfood.jsp");
             }
             else {
                 request.getSession().setAttribute("errorMessage", "Username or password is incorrect");
