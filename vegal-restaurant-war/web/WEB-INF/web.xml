@@ -16,6 +16,18 @@
         <servlet-name>Logout</servlet-name>
         <servlet-class>authentication.user.Logout</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Reservation</servlet-name>
+        <servlet-class>servlet.user.Reservation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReservationPage</servlet-name>
+        <servlet-class>servlet.user.ReservationPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MyReservations</servlet-name>
+        <servlet-class>servlet.user.MyReservations</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Reservation</servlet-name>
+        <url-pattern>/make-reservation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReservationPage</servlet-name>
+        <url-pattern>/reservation-page</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MyReservations</servlet-name>
+        <url-pattern>/my-reservations</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,9 +1,11 @@
 <%-- 
-    Document   : home
-    Created on : 15-Aug-2020, 14:17:47
-    Author     : kenne
+    Document   : my_reservations
+    Created on : Aug 17, 2020, 4:34:01 AM
+    Author     : makut
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="ejb.entities.Reservation"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>VegAl Home Page</title>
+  <title>VegAl User Reservations</title>
 
   <!-- Bootstrap core CSS -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -88,9 +90,13 @@
       </nav>
 
       <div class="container-fluid">
-        <h1 class="mt-4">Welcome!</h1>
-        <p>You can make a reservation or order your favourite dish from the options in the sidebar menu.</p>
-        <p><strong>Bon Appétit!</strong></p>
+        <%
+            List<Reservation> reservations = (List<Reservation>) request.getAttribute("reservations");
+            
+            for (Reservation reservation : reservations) {
+                out.print(reservation.getTable().getName());
+            }
+        %>
 
       </div>
     </div>
@@ -114,4 +120,3 @@
 </body>
 
 </html>
-
