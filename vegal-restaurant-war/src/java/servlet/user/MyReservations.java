@@ -3,28 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package authentication.user;
+package servlet.user;
 
 import ejb.entities.User;
-import security.BCrypt;
+import ejb.sessions.ReservationFacadeLocal;
 import ejb.sessions.UserFacadeLocal;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author makut
  */
-public class Login extends HttpServlet {
+public class MyReservations extends HttpServlet {
+
+    @EJB
+    private ReservationFacadeLocal reservationFacade;
 
     @EJB
     private UserFacadeLocal userFacade;
+
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,32 +43,29 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
         
-        RequestDispatcher dispatcher = null;
+        Object user_id = request.getSession().getAttribute("user_id");
+        User user = userFacade.find(user_id);
+        List<ejb.entities.Reservation> reservations = reservationFacade.userReservations(user);
         
-        if (email == null || password == null || email.equals("") || password.equals("")) {
-            request.getSession().setAttribute("errorMessage", "Please fill in all the fields");
-            dispatcher = request.getRequestDispatcher("login.jsp");
-            dispatcher.include(request, response);
-        }else {
-            User user = userFacade.findByEmail(email);
-            
-            if (BCrypt.checkpw(password, user.getPassword())) {
-                HttpSession session = request.getSession();
-                session.setAttribute("user_id", user.getId());
-                session.setAttribute("email", user.getEmail());
-                session.setAttribute("name", user.getName());
-                session.setMaxInactiveInterval(600);
-                response.sendRedirect("home.jsp");
-            }
-            else {
-                request.getSession().setAttribute("errorMessage", "Username or password is incorrect");
-                dispatcher = request.getRequestDispatcher("login.jsp");
-                dispatcher.include(request, response);
-            }
-        }
+        request.setAttribute("reservations", reservations);
+        RequestDispatcher dispatcher =  request.getRequestDispatcher("my_reservation.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
