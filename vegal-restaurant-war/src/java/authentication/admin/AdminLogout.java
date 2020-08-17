@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package authentication.user;
+package authentication.admin;
 
-import ejb.entities.User;
-import security.BCrypt;
-import ejb.sessions.UserFacadeLocal;
 import java.io.IOException;
-import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,13 +16,11 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author makut
+ * @author kenne
  */
-public class Login extends HttpServlet {
+@WebServlet(name = "AdminLogout", urlPatterns = {"/AdminLogout"})
+public class AdminLogout extends HttpServlet {
 
-    @EJB
-    private UserFacadeLocal userFacade;
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,32 +33,31 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
         
-        RequestDispatcher dispatcher = null;
-        
-        if (email == null || password == null || email.equals("") || password.equals("")) {
-            request.getSession().setAttribute("errorMessage", "Please fill in all the fields");
-            dispatcher = request.getRequestDispatcher("login.jsp");
-            dispatcher.include(request, response);
-        }else {
-            User user = userFacade.findByEmail(email);
-            
-            if (BCrypt.checkpw(password, user.getPassword())) {
-                HttpSession session = request.getSession();
-                session.setAttribute("id", user.getId());
-                session.setAttribute("email", user.getEmail());
-                session.setAttribute("name", user.getName());
-                session.setMaxInactiveInterval(600);
-                response.sendRedirect("home.jsp");
-            }
-            else {
-                request.getSession().setAttribute("errorMessage", "Username or password is incorrect");
-                dispatcher = request.getRequestDispatcher("login.jsp");
-                dispatcher.include(request, response);
-            }
+        HttpSession session = request.getSession();
+        if (session.getAttribute("name") == null || session.getAttribute("name").equals("")) {
+            session.setAttribute("errorMessage", "Your session has expired. Login ");
+            response.sendRedirect("admin-login.jsp");
         }
+        else {
+            session.invalidate();
+            response.sendRedirect("admin-login.jsp");
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**

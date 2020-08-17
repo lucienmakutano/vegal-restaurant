@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package authentication.user;
+package authentication.admin;
 
-import ejb.entities.User;
+import ejb.entities.Admin;
 import security.BCrypt;
-import ejb.sessions.UserFacadeLocal;
+import ejb.sessions.admin.AdminFacadeLocal;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,13 +21,14 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author makut
+ * @author kenne
  */
-public class Login extends HttpServlet {
-
-    @EJB
-    private UserFacadeLocal userFacade;
+@WebServlet(name = "AdminLogin", urlPatterns = {"/AdminLogin"})
+public class AdminLogin extends HttpServlet {
     
+    @EJB
+    private AdminFacadeLocal adminFacade;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -48,19 +51,19 @@ public class Login extends HttpServlet {
             dispatcher = request.getRequestDispatcher("login.jsp");
             dispatcher.include(request, response);
         }else {
-            User user = userFacade.findByEmail(email);
+            Admin admin = adminFacade.findByEmail(email);
             
-            if (BCrypt.checkpw(password, user.getPassword())) {
+            if (BCrypt.checkpw(password, admin.getPassword())) {
                 HttpSession session = request.getSession();
-                session.setAttribute("id", user.getId());
-                session.setAttribute("email", user.getEmail());
-                session.setAttribute("name", user.getName());
+                session.setAttribute("id", admin.getId());
+                session.setAttribute("email", admin.getEmail());
+                session.setAttribute("name", admin.getName());
                 session.setMaxInactiveInterval(600);
-                response.sendRedirect("home.jsp");
+                response.sendRedirect("admin-login.jsp");
             }
             else {
                 request.getSession().setAttribute("errorMessage", "Username or password is incorrect");
-                dispatcher = request.getRequestDispatcher("login.jsp");
+                dispatcher = request.getRequestDispatcher("admin-login.jsp");
                 dispatcher.include(request, response);
             }
         }
